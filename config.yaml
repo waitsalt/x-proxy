@@ -1,0 +1,42 @@
+info:
+  enable: true
+  level: info
+
+model: rule
+
+route:
+  rule:
+    - type: domain
+      source: ["www.baidu.com"]
+      target: 节点 2
+
+  rule_set:
+    # - name: test
+    #   path: /path/to/rule_set.yaml
+    #   select: 手动选择
+
+  default: 节点 2
+
+inbound:
+  - type: http
+    name: inbound_http
+    host: 127.0.0.1
+    port: 9000
+
+  - type: socks5
+    name: inbound_socks5
+    host: 127.0.0.1
+    port: 9001
+    auth_enable: false
+
+outbound:
+  - type: http
+    name: 节点 1
+    host: 139.159.106.133
+    port: 443
+
+  - type: socks5
+    name: 节点 2
+    host: 72.195.34.41
+    port: 4145
+    auth_enable: false
