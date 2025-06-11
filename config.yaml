@@ -1,0 +1,50 @@
+info:
+  enable: true
+  level: trace
+
+mode: rule
+
+route:
+  global: o1
+  default: o2
+  rule:
+    - type: keyword
+      source: ["baidu","api"]
+      outbound: o1
+
+    - type: keyword
+      source: ["119","bilibili"]
+      outbound: o2
+
+  rule_set:
+    - name: rule_set_local_1
+      path: aa.yaml
+      outbound: o1
+    - name: rule_set_remote1
+      path: bb.yaml
+      url: asdasdas
+      outbound: o1
+
+inbound:
+  - type: http
+    name: i1
+    host: 127.0.0.1
+    port: 9000
+
+  - type: socks5
+    name: i2
+    host: 127.0.0.1
+    port: 9001
+    auth_enable: false
+
+outbound:
+  - type: http
+    name: o1
+    host: 172.24.145.146
+    port: 7222
+
+  - type: socks5
+    name: o2
+    host: 172.24.145.146
+    port: 7221
+    auth_enable: false
