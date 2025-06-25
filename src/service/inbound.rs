@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::common::config::inbound::Inbound;
+use crate::config::inbound::Inbound;
 
 pub struct InboundManager {
     pub inbound_hash_map: HashMap<String, Inbound>,

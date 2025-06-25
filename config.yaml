@@ -1,19 +1,19 @@
 info:
   enable: true
-  level: trace
+  level: debug
 
 mode: rule
 
-route:
+router:
   global: o1
   default: o2
   rule:
     - type: keyword
-      source: ["baidu","api"]
+      source: ["baidu", "api"]
       outbound: o1
 
     - type: keyword
-      source: ["119","bilibili"]
+      source: ["119", "bilibili"]
       outbound: o2
 
   rule_set:

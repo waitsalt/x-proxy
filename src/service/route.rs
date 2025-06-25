@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-use crate::common::config::route::{Rule, RuleSet, RuleType};
+use crate::config::router::{Rule, RuleSet, RuleType};
 
 #[derive(Debug, Deserialize)]
 pub struct Route {
@@ -22,12 +22,17 @@ impl Route {
 
 pub struct RouteManager {
     pub rule: Vec<Rule>,
+    pub global: String,
     pub default: String,
 }
 
 impl RouteManager {
-    pub fn init(rule: Vec<Rule>, default: String) -> Self {
-        RouteManager { rule, default }
+    pub fn init(rule: Vec<Rule>, default: String, global: String) -> Self {
+        RouteManager {
+            rule,
+            global,
+            default,
+        }
     }
 
     pub fn switch(&self, target_host: &str) -> &str {

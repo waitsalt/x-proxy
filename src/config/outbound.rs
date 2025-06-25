@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-use crate::protocol::{http::model::Http, socks5::model::Socks5};
+use crate::protocol::{http::Http, socks5::Socks5};
 
 #[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "lowercase", tag = "type")]

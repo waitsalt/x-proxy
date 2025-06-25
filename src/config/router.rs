@@ -1,14 +1,14 @@
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
-pub struct Route {
+pub struct Router {
     pub global: String,
     pub default: String,
     pub rule: Vec<Rule>,
     pub rule_set: Vec<RuleSet>,
 }
 
-impl Route {
+impl Router {
     pub fn init(&self) -> Vec<Rule> {
         let mut rule_list = Vec::new();
         for rule_set in &self.rule_set {
@@ -87,15 +87,7 @@ impl RuleSet {
                 rules
             }
             RuleSet::RuleSetRemote(_remote) => {
-                // let mut rules = Vec::new();
-                // if let Ok(content) = reqwest::blocking::get(&remote.url).unwrap().text() {
-                //     for line in content.lines() {
-                //         if let Some(rule) = line.parse::<RuleSetRule>() {
-                //             rules.push(rule.to_rule(&remote.outbound));
-                //         }
-                //     }
-                // }
-                // rules
+                // TODO
                 vec![]
             }
         }
